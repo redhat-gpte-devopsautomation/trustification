@@ -9,6 +9,9 @@ image:
   pullPolicy: IfNotPresent
   version: ec77b84be0c2c1e9cbd62fed7759d5e379477bf1
 
+infrastructure:
+  port: 9010
+
 guac:
   image:
     name: guac
