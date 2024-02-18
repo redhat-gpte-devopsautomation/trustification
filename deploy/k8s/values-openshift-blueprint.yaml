@@ -43,7 +43,7 @@ docsImage: ghcr.io/trustification/trust-docs
 testsImage: ghcr.io/trustification/trust-tests
 guacImage: ghcr.io/trustification/guac:v0.3.21
 
-domain: apps.cluster-s2528.sandbox1481.opentlc.com
+domain: {{ apps_domain }}
 
 deployPostgres: true
 deployMinio: true
@@ -106,7 +106,7 @@ spog:
   branding: true
   ui:
     customize: false
-    host: console.apps.cluster-s2528.sandbox1481.opentlc.com
+    host: console.{{ apps_domain }}
     resources:
       requests:
         cpu: "100m"
@@ -257,25 +257,25 @@ exhort:
 keycloakRealm: {}
 oidcClients:
   frontend:
-    issuerUrl: https://sso.apps.cluster-s2528.sandbox1481.opentlc.com/realms/chicken
+    issuerUrl: https://sso.{{ apps_domain }}/realms/chicken
     clientId:
       value: frontend
   walker:
-    issuerUrl: https://sso.apps.cluster-s2528.sandbox1481.opentlc.com/realms/chicken
+    issuerUrl: https://sso.{{ apps_domain }}/realms/chicken
     clientSecret:
       valueFrom:
         secretKeyRef:
           name: oidc-client-walker
           key: client-secret
   testingManager:
-    issuerUrl: https://sso.apps.cluster-s2528.sandbox1481.opentlc.com/realms/chicken
+    issuerUrl: https://sso.{{ apps_domain }}/realms/chicken
     clientSecret:
       valueFrom:
         secretKeyRef:
           name: oidc-client-testing-manager
           key: client-secret
   testingUser:
-    issuerUrl: https://sso.apps.cluster-s2528.sandbox1481.opentlc.com/realms/chicken
+    issuerUrl: https://sso.{{ apps_domain }}/realms/chicken
     clientSecret:
       valueFrom:
         secretKeyRef:
@@ -318,7 +318,7 @@ keycloak:
   ingress:
     enabled: true
     ingressClassName: openshift-default
-    hostname: sso.apps.cluster-s2528.sandbox1481.opentlc.com
+    hostname: sso.{{ apps_domain }}
     servicePort: https
     annotations:
       route.openshift.io/termination: reencrypt
