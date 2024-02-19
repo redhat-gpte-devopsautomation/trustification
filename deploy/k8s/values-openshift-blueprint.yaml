@@ -62,7 +62,9 @@ postgres:
     runAsNonRoot: true
     seccompProfile:
       type: RuntimeDefault
-sso: {}
+sso:
+  admin: {{ tpa_password }}
+  realmAdmin: {{ tpa_password }}
 kafka:
   image: docker.io/bitnami/kafka@sha256:8fedaa492f1f570cade60f5ff09978cd841307b1e9f93fe6216136ca165fcc2d
   resources:
