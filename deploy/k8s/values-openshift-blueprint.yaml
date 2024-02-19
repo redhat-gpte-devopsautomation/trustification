@@ -88,7 +88,7 @@ collectSubReplicas: 1
 global:
   postgresql:
     auth:
-      password: admin123456
+      password: {{ tpa_password }}
 
 imagePullPolicy: IfNotPresent
 region: eu-west-1
